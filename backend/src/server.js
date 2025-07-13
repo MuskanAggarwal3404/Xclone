@@ -1,4 +1,9 @@
 import express from "express"
+import { ENV } from "./config/env";
+import {connectDB} from "./config/db.js";
 
 const app=express();
-app.listen(5001,()=>console.log("Running!"));
+
+connectDB();
+app.get("/",(req,res)=>res.send("Hello"));
+app.listen(ENV.PORT,()=>console.log("Running!"));
